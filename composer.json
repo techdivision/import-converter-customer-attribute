@@ -1,0 +1,43 @@
+{
+    "name": "techdivision/import-converter-customer-attribute",
+    "description": "Pacemaker library providing the functionality to convert a CSV file with attribute option values from a CSV file with customer",
+    "license": "OSL-3.0",
+    "require": {
+        "php": ">=7.1.0",
+        "techdivision/import-customer": "16.*",
+        "techdivision/import-attribute": "21.*",
+        "techdivision/import-converter": "10.*"
+    },
+    "require-dev": {
+        "doctrine/dbal": "2.5.*",
+        "pdepend/pdepend": "2.5.2",
+        "phpmd/phpmd": "@stable",
+        "phpunit/phpunit": "~6.5.0",
+        "sebastian/phpcpd": "~3.0.0",
+        "squizlabs/php_codesniffer": "~3.4.0",
+        "consolidation/robo": "~1.0",
+        "mikey179/vfsstream": "~1.0",
+        "symfony/http-kernel": "~3.4"
+    },
+    "authors": [
+        {
+            "name": "Tim Wagner",
+            "email": "t.wagner@techdivision.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "TechDivision\\Import\\Converter\\Customer\\Attribute\\": [
+                "src/",
+                "symfony/"
+            ]
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "TechDivision\\Import\\Converter\\Customer\\Attribute\\": [
+                "tests/unit"
+            ]
+        }
+    }
+}
