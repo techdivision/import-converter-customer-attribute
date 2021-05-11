@@ -30,6 +30,7 @@ use TechDivision\Import\Services\ImportProcessorInterface;
 use TechDivision\Import\Converter\Observers\AbstractConverterObserver;
 use TechDivision\Import\Attribute\Callbacks\SwatchTypeLoaderInterface;
 use TechDivision\Import\Attribute\Services\AttributeBunchProcessorInterface;
+use TechDivision\Import\Observers\CleanUpEmptyColumnsTrait;
 
 /**
  * Observer that extracts the missing attribute option values from a customer CSV.
@@ -43,6 +44,8 @@ use TechDivision\Import\Attribute\Services\AttributeBunchProcessorInterface;
 class CustomerToAttributeOptionValueConverterObserver extends AbstractConverterObserver
 {
 
+    use CleanUpEmptyColumnsTrait;
+    
     /**
      * The artefact type.
      *
@@ -72,13 +75,6 @@ class CustomerToAttributeOptionValueConverterObserver extends AbstractConverterO
     protected $swatchTypeLoader;
 
     /**
-     * The array with the column keys that has to be cleaned up when their values are empty.
-     *
-     * @var array
-     */
-    protected $cleanUpEmptyColumnKeys;
-
-    /**
      * Initialize the observer with the passed customer bunch processor instance.
      *
      * @param \TechDivision\Import\Services\ImportProcessorInterface                   $importProcessor         The customer bunch processor instance
@@ -100,45 +96,6 @@ class CustomerToAttributeOptionValueConverterObserver extends AbstractConverterO
 
         // pass the state detector to the parent method
         parent::__construct($stateDetector);
-    }
-
-    /**
-     * Remove all the empty values from the row and return the cleared row.
-     *
-     * @return array The cleared row
-     */
-    protected function clearRow()
-    {
-
-        // query whether or not the column keys has been initialized
-        if ($this->cleanUpEmptyColumnKeys === null) {
-            // initialize the array with the column keys that has to be cleaned-up
-            $this->cleanUpEmptyColumnKeys = array();
-
-            // query whether or not column names that has to be cleaned up have been configured
-            if ($this->getSubject()->getConfiguration()->hasParam(ConfigurationKeys::CLEAN_UP_EMPTY_COLUMNS)) {
-                // if yes, load the column names
-                $cleanUpEmptyColumns = $this->getSubject()->getCleanUpColumns();
-
-                // translate the column names into column keys
-                foreach ($cleanUpEmptyColumns as $cleanUpEmptyColumn) {
-                    if ($this->hasHeader($cleanUpEmptyColumn)) {
-                        $this->cleanUpEmptyColumnKeys[] = $this->getHeader($cleanUpEmptyColumn);
-                    }
-                }
-            }
-        }
-
-        // remove all the empty values from the row, expected the columns has to be cleaned-up
-        foreach ($this->row as $key => $value) {
-            // query whether or not the value is empty AND the column has NOT to be cleaned-up
-            if (($value === null || $value === '') && in_array($key, $this->cleanUpEmptyColumnKeys) === false) {
-                unset($this->row[$key]);
-            }
-        }
-
-        // finally return the clean row
-        return $this->row;
     }
 
     /**
