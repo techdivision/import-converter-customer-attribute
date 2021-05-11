@@ -5,7 +5,7 @@
 
     <services>
 
-        <service id="import_converter_customer_attribute.listeners.reduce.attribute.option.value" class="TechDivision\Import\Converter\Customer\Attribute\Listeners\ReduceAttributeOptionValueListener">
+        <service id="import_converter_customer_attribute.listeners.reduce.attribute.option.value" class="TechDivision\Import\Converter\Customer\Attribute\Listeners\ReduceCustomAttributeOptionValueListener">
             <argument type="service" id="import.processor.registry"/>
         </service>
 
