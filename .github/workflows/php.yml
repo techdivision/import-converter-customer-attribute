@@ -1,4 +1,4 @@
-name: techdivision/import
+name: techdivision/import-converter-customer-attribute
 
 on:
   push:
