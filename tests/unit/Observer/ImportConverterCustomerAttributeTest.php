@@ -23,7 +23,7 @@ use PHPUnit\Framework\TestCase;
  * @link      https://github.com/techdivision/import-ee
  * @link      http://www.techdivision.com
  */
-class ImportConverterCustomerAttribute extends TestCase
+class ImportConverterCustomerAttributeTest extends TestCase
 {
 
     /**
