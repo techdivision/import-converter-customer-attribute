@@ -10,7 +10,7 @@
  * @link      http://www.techdivision.com
  */
 
-namespace TechDivision\Import\Converter\Customer\Attribute\Observers;
+namespace TechDivision\Import\Converter\Customer\Attribute\Observer;
 
 use PHPUnit\Framework\TestCase;
 
