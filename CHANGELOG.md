@@ -1,3 +1,13 @@
+# Version 3.0.0
+
+## Bugfixes
+
+* none
+
+## Features
+
+* PAC-541: Update composer configuration with php Version ">=^7.3"
+
 # Version 2.0.1
 
 ## Bugfixes
