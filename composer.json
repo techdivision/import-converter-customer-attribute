@@ -4,9 +4,9 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
-        "techdivision/import-customer": "*",
-        "techdivision/import-attribute": "*",
-        "techdivision/import-converter": "*"
+        "techdivision/import-customer": "dev-compatibility-php-81",
+        "techdivision/import-attribute": "dev-compatibility-php-81",
+        "techdivision/import-converter": "dev-compatibility-php-81"
     },
     "require-dev": {
         "doctrine/dbal": "^4.0.4",
