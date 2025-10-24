@@ -73,13 +73,13 @@ class CustomerToAttributeOptionValueConverterObserver extends AbstractConverterO
      * @param \TechDivision\Import\Services\ImportProcessorInterface                   $importProcessor         The customer bunch processor instance
      * @param \TechDivision\Import\Attribute\Services\AttributeBunchProcessorInterface $attributeBunchProcessor The attribute bunch processor instance
      * @param \TechDivision\Import\Attribute\Callbacks\SwatchTypeLoaderInterface       $swatchTypeLoader        The swatch type loader instance
-     * @param \TechDivision\Import\Observers\StateDetectorInterface|null               $stateDetector           The state detector instance to use
+     * @param \TechDivision\Import\Observers\StateDetectorInterface|null $stateDetector           The state detector instance to use
      */
     public function __construct(
         ImportProcessorInterface $importProcessor,
         AttributeBunchProcessorInterface $attributeBunchProcessor,
         SwatchTypeLoaderInterface $swatchTypeLoader,
-        StateDetectorInterface $stateDetector = null
+        ?StateDetectorInterface $stateDetector = null
     ) {
 
         // initialize the swatch type loader and the processor instances
