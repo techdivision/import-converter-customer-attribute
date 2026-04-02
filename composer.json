@@ -3,7 +3,7 @@
     "description": "Pacemaker library providing the functionality to convert a CSV file with attribute option values from a CSV file with customer",
     "license": "MIT",
     "require": {
-        "php": "^8.1",
+        "php": "^8.3",
         "techdivision/import-customer": "^18.1",
         "techdivision/import-attribute": "^23.1",
         "techdivision/import-converter": "^12.0"
