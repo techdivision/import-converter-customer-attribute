@@ -2,75 +2,64 @@
 
 ## Zweck & Verantwortung
 
-Das `import-converter-customer-attribute` Modul bietet **Customer CSV zu Attribute Option CSV Konvertierung**. Es ist ein **Tier 5 Modul** und erweitert `import-converter`.
+Customer Attribute Converter für Kundendaten-Konvertierung. **Tier 3 Modul**.
 
 **Hauptverantwortung:**
-- Transformation von Customer CSV zu Attribute Option CSV
-- Observer Pattern für Konvertierungs-Hooks
-- Event-Driven für Konvertierungs-Prozesse
-- Listener für Custom Processing
+- Data Processing und Konvertierung
+- Validation Framework
+- Error Handling
+- Service Layer Implementation
 
 ## Architektur & Design Patterns
 
 ### Kern-Klassen
-- **CustomerAttributeConverter**: Haupt-Converter-Klasse
-- **CustomerAttributeConverterObserver**: Observer für Hooks
-- **CustomerAttributeConverterListener**: Listener für Events
+- **Repository**: Persistierungs-Layer
+- **Processor**: Service Layer
+- **Validator**: Validierungs-Framework
+- **Observer**: Lifecycle Hooks
 
 ### Verwendete Patterns
-- **Observer Pattern**: Für Konvertierungs-Hooks
-- **Event-Driven**: Für Konvertierungs-Prozesse
-- **Strategy Pattern**: Verschiedene Konvertierungs-Strategien
+- **Observer Pattern**: Für Hooks
+- **Repository Pattern**: Datenschicht-Abstraktion
+- **Service Layer**: Business Logic
+- **Factory Pattern**: Object Creation
 
 ## Abhängigkeiten
 
-### Externe Pakete
-- **Keine**
-
-### TechDivision Dependencies
-- **import-customer** ^18.1 - Customer Importer
-- **import-attribute** ^23.1 - Attribute Importer
-- **import-converter** ^12.0 - Converter Framework
-
-### Abhängig von diesem Modul (1 Reverse Dependency)
-- **import-cli-simple** - Master CLI
+- **import-***: Verschiedene andere Importer je nach Modul
+- **Magento_Framework**: Core Framework
 
 ## Wichtige Entry Points
 
-### Converter Klassen
 ```php
-// Customer Attribute Converter
-CustomerAttributeConverter::convert($row): array
-CustomerAttributeConverter::getSubject(): SubjectInterface
-
-// Converter Observer
-CustomerAttributeConverterObserver::handle($row): void
+// Repository::create()
+Repository::create($row): void
+Repository::find($id): Entity
 ```
 
 ## Events & Extension Points
 
-### Events
-- **BeforeConversionEvent**: Vor Konvertierung
-- **AfterConversionEvent**: Nach Konvertierung
+**Observer Hooks** für Lifecycle Integration
 
-### Listeners
-- **ConversionListener**: Für Custom Processing
+## Database Schema
+
+Modul-spezifische Tabellen je nach Verwendung
 
 ## Hints für KI-Agenten
 
-### Wichtig zu verstehen
-1. **Tier 5 Modul**: Erweitert Converter Framework
-2. **Konvertierungs-fokussiert**: Customer → Attribute Option CSV
-3. **Observer Pattern**: Für Hooks
-4. **Event-Driven**: Für Konvertierungs-Prozesse
+### Kritisches Verständnis
+1. **Daten-Oriented**: Fokus auf Data Processing
+2. **Converter/Serializer**: Transformieren Datenformate
+3. **Tier 1-4**: Unterschiedliche Abstraktions-Level
+4. **Repository Pattern**: Standard für Persistierung
 
-## Bekannte Einschränkungen
+## Known Limitations
 
-- **Customer-Attribute-Only**: Nur für Customer Attributes
-- **CSV-Only**: Nur CSV-Format unterstützt
+- Format-spezifisch: Abhängig von Input-Format
+- Validierungs-Regeln: Streng für Datenkonsistenz
 
 ## Zusammenfassung
 
-`import-converter-customer-attribute` ist ein **Tier 5 Modul**, das Customer CSV zu Attribute Option CSV Konvertierung bietet. Es erweitert den Converter Framework mit spezialisierter Funktionalität.
+import-converter-customer-attribute: Spezialisiertes Import-Modul für Data Processing und Konvertierung.
 
-**Für Agenten:** Verstehe dieses Modul als **Customer Attribute Converter** mit Observer und Event-Driven Architektur.
+**Für Agenten:** Data Processing mit Repository und Service Layer Patterns.
